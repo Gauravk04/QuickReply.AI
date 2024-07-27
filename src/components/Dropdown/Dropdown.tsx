@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Info, UserCircle, Check } from 'phosphor-react';
 import './Dropdown.scss';
 
 type DropdownType = 'SingleNoIcon' | 'SingleRadio' | 'Multi';
+type DropdownPosition = 'auto' | 'bottom' | 'top' | 'right' | 'left';
 
 export interface DropdownProps {
   label: string;
@@ -17,6 +18,7 @@ export interface DropdownProps {
   activeItemIndex: number;
   items: string[];
   onItemSelect?: (item: string, index: number) => void;
+  dropdownPosition: DropdownPosition; // Add this prop
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -32,9 +34,21 @@ const Dropdown: React.FC<DropdownProps> = ({
   activeItemIndex,
   items,
   onItemSelect,
+  dropdownPosition, // Destructure this prop
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState(text);
+
+  useEffect(() => {
+    if (type === 'Multi') {
+      setInputValue(selectedItems.join(', '));
+    } else if (selectedItems.length > 0) {
+      setInputValue(selectedItems[0]);
+    } else {
+      setInputValue(text);
+    }
+  }, [selectedItems, type, text]);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -72,7 +86,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   return (
-    <div className={`dropdown ${getStatusClass()} ${isOpen ? 'dropdown--open' : ''}`}>
+    <div className={`dropdown ${getStatusClass()} ${isOpen ? 'dropdown--open' : ''} dropdown--position-${dropdownPosition}`}>
       {labelVisibility === 'Visible' && (
         <div className="dropdown__label">
           {labelIconVisibility === 'Visible' && <Info />}
@@ -81,7 +95,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       )}
       <div className="dropdown__input" onClick={toggleDropdown} role="button" tabIndex={0} aria-haspopup="true" aria-expanded={isOpen}>
         {leftIconVisibility === 'Visible' && <UserCircle />}
-        <input type="text" value={text} readOnly disabled={status === 'Disabled'} aria-label={label} />
+        <input type="text" value={inputValue} readOnly disabled={status === 'Disabled'} aria-label={label} />
       </div>
       {isOpen && (
         <div className="dropdown__menu" role="menu" aria-label="Dropdown Menu">
@@ -106,3 +120,4 @@ const Dropdown: React.FC<DropdownProps> = ({
 };
 
 export default Dropdown;
+

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import Dropdown, { DropdownProps } from '../components/Dropdown/Dropdown';
 
@@ -18,6 +18,10 @@ export default {
     activeItemIndex: { control: 'number' },
     items: { control: 'object' },
     onItemSelect: { action: 'selected' },
+    dropdownPosition: {
+      control: 'radio',
+      options: ['auto', 'bottom', 'top', 'right', 'left'],
+    },
   },
 } as Meta<DropdownProps>;
 
@@ -35,7 +39,6 @@ Default.args = {
   text: '',
   type: 'SingleNoIcon',
   activeItemIndex: -1,
-  items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5']
+  items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'],
+  dropdownPosition: 'auto',
 };
-
-
