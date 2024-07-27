@@ -1,30 +1,12 @@
-# React + TypeScript + Vite
+# QuickReply.AI StoryBook DropDown Assignment 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Some Screenshots: 
 
-Currently, two official plugins are available:
+![Screenshot (69)](https://github.com/user-attachments/assets/2162aadc-44df-43ac-8da5-b122a0fbadef)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Screenshot (70)](https://github.com/user-attachments/assets/ca5f72fa-3847-4f34-8209-9489ea1b951f)
 
-## Expanding the ESLint configuration
+![Screenshot (71)](https://github.com/user-attachments/assets/aec077ee-e9b7-4177-9205-fdddec1ab234)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+For more Info Connect: https://www.linkedin.com/in/gaurav-k04/
